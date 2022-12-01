@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --inspect index.js",
+    "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss -o src/public/css ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,13 +22,24 @@
     "url": "https://github.com/89VAnh/nodejs_blog/issues"
   },
   "homepage": "https://github.com/89VAnh/nodejs_blog#readme",
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6"
   },
   "devDependencies": {
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.4",
     "morgan": "^1.10.0",
     "node-sass": "^8.0.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.0"
   }
 }
