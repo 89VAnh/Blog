@@ -24,9 +24,6 @@ class CourseController {
       .save()
       .then(() => res.redirect("/"))
       .catch((err) => {});
-
-    res.send("Course saved!");
-    // res.render("courses/store");
   }
   //[GET] /courses/:id/edit
   edit(req, res, next) {
@@ -43,6 +40,12 @@ class CourseController {
     data.image = `https://i.ytimg.com/vi/${data.videoId}/hqdefault.jpg`;
     const course = new Course(data);
     Course.updateOne({ _id: req.params.id }, data)
+      .then(() => res.redirect("/me/stored/courses"))
+      .catch(next);
+  }
+  //[DELETE] /courses/:id
+  destroy(req, res, next) {
+    Course.deleteOne({ _id: req.params.id })
       .then(() => res.redirect("/me/stored/courses"))
       .catch(next);
   }
