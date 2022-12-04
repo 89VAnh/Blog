@@ -1,5 +1,8 @@
 <div class="mt-4">
-  <h3>Khoá học của tôi</h3>
+  <div>
+    <h3>Khoá học của tôi</h3>
+    <a href="/me/trash/courses">Thùng rác</a>
+  </div>
   <table class="table">
     <thead>
       <tr>
@@ -25,6 +28,12 @@
               data-id="{{this._id}}"
               data-bs-target="#delete-course-modal"
             >Xóa</a>
+          </td>
+        </tr>
+      {{else}}
+        <tr>
+          <td colspan="5" class="text-center">Bạn chưa đăng ký khoá học nào.
+            <a href="/courses/create">Đăng khoá học</a>
           </td>
         </tr>
       {{/each}}
